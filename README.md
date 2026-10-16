@@ -6,7 +6,7 @@
 
 Boutiques, vintage shops, concept stores and markets in any city, with AI-planned shopping itineraries and packing lists.
 
-![Status](https://img.shields.io/badge/status-pre--launch-D97757?style=flat)
+[![Live](https://img.shields.io/badge/live-vlokk.com-D97757?style=flat)](https://www.vlokk.com/)
 ![Built solo](https://img.shields.io/badge/built-solo-000000?style=flat)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
@@ -14,7 +14,7 @@ Boutiques, vintage shops, concept stores and markets in any city, with AI-planne
 ![Claude](https://img.shields.io/badge/Claude_API-D97757?style=flat&logo=anthropic&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white)
 
-**Product Manager & solo builder** · Source code is private, happy to walk through it live
+**[🌐 Visit vlokk.com](https://www.vlokk.com/)** · Product Manager & solo builder · Source code is private, happy to walk through it live
 
 </div>
 

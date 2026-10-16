@@ -11,10 +11,12 @@ Boutiques, vintage shops, concept stores and markets in any city, with AI-planne
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
-![Claude](https://img.shields.io/badge/Claude_API-D97757?style=flat&logo=anthropic&logoColor=white)
+![Claude API](https://img.shields.io/badge/Claude_API-D97757?style=flat&logo=anthropic&logoColor=white)
+![Google Places](https://img.shields.io/badge/Google_Places_API-4285F4?style=flat&logo=googlemaps&logoColor=white)
+![Claude Code](https://img.shields.io/badge/built_with-Claude_Code-D97757?style=flat&logo=anthropic&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white)
 
-**[🌐 Visit vlokk.com](https://www.vlokk.com/)** · Product Manager & solo builder · Source code is private, happy to walk through it live
+**[🌐 Visit vlokk.com](https://www.vlokk.com/)** · Product Manager & AI-native builder · Source code is private, happy to walk through it live
 
 </div>
 
@@ -32,9 +34,50 @@ Boutiques, vintage shops, concept stores and markets in any city, with AI-planne
 
 | ⏱️ 9 weeks | 🔁 258 commits | 🧩 55 API endpoints | 📱 37 screens |
 |:---:|:---:|:---:|:---:|
-| **🗃️ 22 data models** | **👥 3 user roles** | **🤖 4 AI features** | **📝 ~25k lines of TypeScript** |
+| **🗃️ 22 data models** | **👥 3 user roles** | **🤖 5 AI features · 8 integrations** | **📝 ~25k lines of TypeScript** |
 
-From first commit to a production deployment with real auth, an admin console, a store-owner portal and AI throughout, built by one person.
+From first commit to a production deployment with real auth, an admin console, a store-owner portal, and AI and live Google data throughout. Built by one person, vibe coding with Claude Code.
+
+---
+
+## 🤖 AI & integrations
+
+Vlokk is built around two core integrations, the **Claude API** and the **Google Places API**, plus a set of supporting services. Each one does a specific job in the product.
+
+### 🧠 Claude API — five AI features, two models
+
+I matched each task to the right model: a fast, low-cost model for quick decisions and a stronger model for writing and planning.
+
+| Feature | What the AI does | Model tier |
+|---|---|---|
+| ✍️ **Store summaries** | Writes a two-sentence editorial description of every store in a "Vogue travel editor" voice, grounded in real customer reviews and the store's own website | Stronger |
+| 🗺️ **Shopping itineraries** | Plans a day-by-day shopping trip from a city, trip length and chosen vibes, using Vlokk's own stores | Stronger |
+| 🧳 **Packing lists** | Builds a categorised packing list for the destination, trip length and style | Stronger |
+| 🛡️ **Submission screening** | Checks community-suggested spots against Vlokk's rules (independent, fashion-focused, no chains) before a human sees them | Fast |
+| 🧭 **Route optimisation** | Re-orders a hand-built day plan into a sensible walking route | Fast |
+
+**What makes it production-ready, not a demo:** output is validated before it's used, calls have timeouts and fallbacks, requests are batched and de-duplicated, every AI endpoint is rate-limited, and generated summaries are stored so each one is only paid for once.
+
+### 📍 Google Maps Platform — the live data behind every search
+
+| API | How Vlokk uses it |
+|---|---|
+| **Places API (Text Search)** | Finds stores for each vibe in a city, requesting only the fields needed to keep costs down, then filters out chains and big-brand flagships |
+| **Places API (location-biased search)** | Powers "near me" and district search, with Vlokk measuring real distances to keep results within a walkable radius |
+| **Place Details** | Pulls ratings, reviews, website and Maps links for each store |
+| **Places Autocomplete** | City, district and address suggestions as you type, run on the server so the API key never reaches the browser |
+| **Geocoding** | Turns a city name into a map centre, and a location back into a neighbourhood name |
+| **Maps JavaScript API** | A custom dark-styled map with Vlokk's own pins, Google's icons dimmed into the background |
+
+### 🔌 Supporting services
+
+| Service | Role |
+|---|---|
+| **Auth.js** | Sign-in, sessions and three user roles |
+| **Postgres (Neon) + Prisma** | 22-model database, with a local-to-production switch requiring no code changes |
+| **Resend** | Verification, password reset and store-claim emails |
+| **Cloudflare Turnstile** | Bot protection on sign-up |
+| **Vercel** | Hosting, deployments and a nightly clean-up job |
 
 ---
 
@@ -210,9 +253,18 @@ The data models for My Style and My Wardrobe are already in place.
 
 ---
 
-## How I built it
+## How I built it: vibe coding, with a PM's judgement
 
-I built Vlokk with Claude Code as my engineering partner. I owned the product: the problem, priorities, user roles, flows, trade-offs and every decision above, plus reviewing, testing and debugging what was built. AI did most of the typing. The result is a production-grade app that would usually take a small team, shipped by one PM.
+Vlokk was built entirely through AI-assisted development, with **Claude Code** as my engineering partner. I describe what I want, review what comes back, test it, and steer until it's right. 258 commits in 9 weeks.
+
+Vibe coding gets you a demo quickly. Getting to production takes judgement, and that part was mine:
+
+- **Deciding what to build** — the problem, the users, the roles, the flows and the trade-offs above.
+- **Choosing the right tools** — which APIs to integrate, which AI model fits each job, and where caching pays off.
+- **Debugging to the root cause** — rate limits, broken saves, production-only failures, traced and fixed properly rather than patched.
+- **Knowing when it's done** — security review, abuse protection and cost controls before launch.
+
+The result is a production-grade app with two major API integrations, five AI features and three user roles, the kind of build that would usually take a small team.
 
 ---
 
